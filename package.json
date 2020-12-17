@@ -1,0 +1,21 @@
+{
+    "name": "parallax-effect",
+    "version": "1.0.0",
+    "description": "Parallax Effect with Typescript",
+    "main": "index.html",
+    "scripts": {
+        "build": "npx webpack",
+        "update": "npm update --save/--save-dev"
+    },
+    "keywords": [
+        "parallax"
+    ],
+    "author": "Marshall K",
+    "license": "UNLICENSED",
+    "devDependencies": {
+        "ts-loader": "^8.0.9",
+        "typescript": "^4.0.5",
+        "webpack": "^4.44.2",
+        "webpack-cli": "^3.3.12"
+    }
+}
