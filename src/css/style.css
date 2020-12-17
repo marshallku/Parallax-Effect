@@ -1,0 +1,51 @@
+html,
+body,
+figure,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #121212;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Parallax */
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Sky */
+#sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Moon */
+#moon {
+    position: fixed;
+    top: 10vh;
+    right: -200px;
+    width: 200px;
+    height: 200px;
+}
+
+/* Main */
+#main {
+    position: relative;
+    z-index: 2;
+}
