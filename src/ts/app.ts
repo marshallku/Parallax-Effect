@@ -6,6 +6,14 @@ const screenSize = {
     vw: 0,
     vh: 0,
 };
+const moonTransform = {
+    x: 0,
+    y: 0,
+    scale: 1,
+};
+const tmpMoonTransform = {
+    x: 0,
+};
 
 const sky = document.getElementById("sky");
 const city = document.getElementById("city");
@@ -15,16 +23,6 @@ const castle = document.getElementById("moon-c");
 const title = document.getElementById("title");
 const iu = document.getElementById("iu");
 const logoElem = document.getElementById("logo");
-
-let moonTransform = {
-    x: 0,
-    y: 0,
-    scale: 1,
-};
-
-let tmpMoonTransform = {
-    x: 0,
-};
 
 function init() {
     // Append logo
