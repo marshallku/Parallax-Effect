@@ -68,7 +68,7 @@ function init() {
         { passive: true, once: true }
     );
 
-    window.addEventListener("click", () => {
+    document.getElementById("autoScroll").addEventListener("click", () => {
         window.scroll(0, 0);
         smoothScroll(document.documentElement.scrollHeight);
     });

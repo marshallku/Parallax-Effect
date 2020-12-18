@@ -16,8 +16,52 @@ html {
     user-select: none;
 }
 
+body > *:not(button):not(#footer) {
+    pointer-events: none;
+}
+
 img {
     max-width: 100%;
+}
+
+/* Auto Scroll*/
+#autoScroll {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    color: #f1f1f1;
+    font: inherit;
+    font-weight: bold;
+    transform: translateX(-50%);
+    transition: color 0.35s ease-in-out;
+    z-index: 4;
+    cursor: pointer;
+}
+
+#autoScroll:hover {
+    color: #f3e98d;
+}
+
+#autoScroll:not(:focus-visible) {
+    outline: 0;
+}
+
+#autoScroll > svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 10px;
+    transition: transform 0.7s ease-in-out;
+}
+
+#autoScroll:hover > svg {
+    transform: rotate3d(0, 0, 1, 720deg);
 }
 
 /* Parallax */
@@ -188,8 +232,23 @@ img {
 /* Footer */
 #footer {
     position: relative;
+    padding: 10px;
     background: #121212;
+    color: #f1f1f1;
+    text-align: center;
+    line-height: 2;
+    font-size: 0.7rem;
     z-index: 5;
+}
+
+#footer > h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#footer a {
+    color: #55b1ff;
+    text-decoration: none;
 }
 
 /* Loader */
