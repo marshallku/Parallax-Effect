@@ -22,7 +22,7 @@ export default function smoothScroll(to: number, duration = 20000) {
 
     const from = window.scrollY;
     const transition = (x: number): number => {
-        return Math.sin((x * Math.PI) / 2);
+        return x;
     };
     const startTime = performance.now();
     animation();
