@@ -1,23 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Parallax Effect</title>
-        <link rel="stylesheet" href="./src/css/style.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link async rel="stylesheet" href="./src/css/style.css" />
+        <link
+            async
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <figure id="sky" class="container">
-            <img src="./src/images/sky.jpg" alt="Sky" />
+            <img src="./src/images/sky.jpg" alt="밤 하늘" />
         </figure>
-        <main id="main">
-            <figure id="city" class="container">
-                <img src="./src/images/city.png" alt="City" />
-            </figure>
-            <figure id="moon">
-                <img src="./src/images/castle.png" alt="Moon" />
-                <img src="./src/images/moon.png" alt="Moon" />
-            </figure>
-        </main>
+        <figure id="city" class="container">
+            <img src="./src/images/city.png" alt="도시" />
+        </figure>
+        <figure id="moon">
+            <img id="moon-g" src="./src/images/moon.png" alt="달" />
+            <img id="moon-c" src="./src/images/castle.png" alt="달 속 호텔" />
+            <img id="moon-m" src="./src/images/moon.png" alt="달" />
+        </figure>
+        <h1 id="title">Welcome</h1>
+        <figure id="iu">
+            <img src="./src/images/IU.png" alt="장만월" />
+        </figure>
+        <div id="forScroll"></div>
+        <footer id="footer">
+            <h3>Thanks to</h3>
+            <p>
+                <a
+                    href="https://unsplash.com/@sandercrombach"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Sander Crombach
+                </a>
+                (Dome of the Rock, Jerusalem)
+            </p>
+            <p>
+                <a
+                    href="https://unsplash.com/@felix_mittermeier"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Felix Mittermeier
+                </a>
+                (milky way)
+            </p>
+            <p>
+                <a
+                    href="https://pixabay.com/users/mila-del-monte-14430330/"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Mila Kusmenko
+                </a>
+                (Hohenzollern Schwäbische Alp)
+            </p>
+            <p>
+                <a
+                    href="https://unsplash.com/@philipmyr"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Philip Myrtorp
+                </a>
+                (gold bauble hanged on green tree)
+            </p>
+            <p>
+                <a
+                    href="https://www.youtube.com/c/Moonben"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    문벤[영상디자인 크리에이터]
+                </a>
+                (호텔델루나 타이틀)
+            </p>
+        </footer>
+        <script defer src="./dist/app.js"></script>
     </body>
 </html>

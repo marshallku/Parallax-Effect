@@ -1,13 +1,19 @@
 html,
 body,
 figure,
-section {
+section,
+h1,
+h3,
+p {
     margin: 0;
     padding: 0;
 }
 
 html {
     background: #121212;
+    font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
+        sans-serif;
+    user-select: none;
 }
 
 img {
@@ -26,26 +32,115 @@ img {
     object-fit: cover;
 }
 
+/* Title */
+#title {
+    position: fixed;
+    top: 45vh;
+    left: 50%;
+    font-size: calc(75px + 4vw);
+    color: #f1f1f1;
+    transform: translate3d(-50%, -50%, 0);
+}
+
 /* Sky */
 #sky {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100vh;
+}
+
+/* City */
+#city {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 2;
 }
 
 /* Moon */
 #moon {
     position: fixed;
     top: 10vh;
-    right: -200px;
-    width: 200px;
-    height: 200px;
+    right: -17vh;
+    width: 17vh;
+    height: 17vh;
+    z-index: 10;
 }
 
-/* Main */
-#main {
+#moon.transition {
+    transition: transform 0.25s ease-in-out;
+}
+
+#moon-g {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+}
+
+#moon-c {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    opacity: 0;
+    z-index: 3;
+}
+
+#moon-m {
     position: relative;
     z-index: 2;
+}
+
+/* Scroll Container */
+#forScroll::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    top: -200px;
+    height: 200px;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 18, 18, 0),
+        rgba(18, 18, 18, 1)
+    );
+}
+
+#forScroll {
+    position: relative;
+    height: 200vh;
+    margin-top: 100vh;
+    background: #121212;
+    z-index: 5;
+}
+
+/* fullmoonlong */
+#iu {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 20;
+}
+
+#iu > img {
+    display: block;
+    width: auto;
+    height: 80vh;
+    margin: 0 auto;
+}
+
+/* Footer */
+#footer {
+    position: relative;
+    background: #121212;
+    z-index: 5;
 }
