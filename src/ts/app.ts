@@ -105,9 +105,19 @@ window.addEventListener(
     { passive: true }
 );
 
-window.addEventListener("load", () => {
-    window.scroll(0, 0);
-});
+window.addEventListener(
+    "load",
+    () => {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.getElementById("loader").classList.add("done");
+            setTimeout(() => {
+                document.getElementById("loader").remove();
+            }, 500);
+        }, 30);
+    },
+    { passive: true, once: true }
+);
 
 window.addEventListener("click", () => {
     window.scroll(0, 0);
