@@ -1,5 +1,6 @@
 import optimizeAnimation from "./optimizeAnimation";
 import smoothScroll from "./smoothScroll";
+import logo from "./logo";
 
 const screenSize = {
     vw: 0,
@@ -13,12 +14,67 @@ const moonGlow = document.getElementById("moon-g");
 const castle = document.getElementById("moon-c");
 const title = document.getElementById("title");
 const iu = document.getElementById("iu");
+const logoElem = document.getElementById("logo");
 
 let moonTransform = {
     x: 0,
     y: 0,
     scale: 1,
 };
+
+let tmpMoonTransform = {
+    x: 0,
+};
+
+function init() {
+    // Append logo
+    const svgLogo = logo();
+    const forFilter = logo();
+
+    forFilter.classList.add("filter");
+
+    logoElem.append(svgLogo);
+    logoElem.append(forFilter);
+
+    // Set ScreenSize
+    setScreenSize();
+
+    // Add event listeners
+    window.addEventListener(
+        "scroll",
+        optimizeAnimation(() => {
+            scrollEffect();
+        }),
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "resize",
+        optimizeAnimation(() => {
+            setScreenSize();
+        }),
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "load",
+        () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.getElementById("loader").classList.add("done");
+                setTimeout(() => {
+                    document.getElementById("loader").remove();
+                }, 500);
+            }, 30);
+        },
+        { passive: true, once: true }
+    );
+
+    window.addEventListener("click", () => {
+        window.scroll(0, 0);
+        smoothScroll(document.documentElement.scrollHeight);
+    });
+}
 
 function setScreenSize() {
     screenSize.vw =
@@ -39,7 +95,10 @@ function scrollEffect() {
     const largerPart = Math.max(vw, vh);
 
     if (scrollY <= 100 * vh) {
+        console.log("a");
         iu.style.opacity = "0";
+        logoElem.style.opacity = "0";
+        logoElem.classList.remove("on");
         sky.style.transform = `translate3d(0, ${-0.25 * scrollY}px, 0)`;
 
         if (scrollY <= 60 * vh) {
@@ -73,53 +132,41 @@ function scrollEffect() {
 
         moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${moonTransform.x}, ${moonTransform.y})`;
     } else if (scrollY <= 150 * vh) {
+        console.log("b");
         const currentY = scrollY - 100 * vh;
 
+        logoElem.style.opacity = "0";
+        logoElem.classList.remove("on");
         castle.style.opacity = "0.5";
         moonGlow.style.opacity = "1";
-        moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${
-            moonTransform.scale
-        }, ${moonTransform.x - currentY * 0.1}, ${moonTransform.y})`;
+
+        tmpMoonTransform.x = moonTransform.x - currentY * 0.1;
+        moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${tmpMoonTransform.x}, ${moonTransform.y})`;
 
         iu.style.opacity = `${currentY / (50 * vh)}`;
-    } else if (scrollY <= 200 * vh) {
+    } else if (scrollY <= 170 * vh) {
+        console.log("c");
         iu.style.opacity = "1";
+    } else if (scrollY <= 220 * vh) {
+        console.log("d");
+        const currentY = scrollY - 170 * vh;
+        const percent50 = currentY / (50 * vh);
+        const moonScale = Math.max(
+            moonTransform.scale - percent50 * moonTransform.scale,
+            0
+        );
+
+        iu.style.opacity = `${1 - percent50}`;
+        logoElem.style.opacity = `${percent50}`;
+        logoElem.classList.remove("on");
+        moon.style.transform = `matrix(${moonScale}, 0, 0, ${moonScale}, ${tmpMoonTransform.x}, ${moonTransform.y})`;
+    } else {
+        console.log("e");
+        iu.style.opacity = "0";
+        logoElem.style.opacity = "1";
+        logoElem.classList.add("on");
+        moon.style.transform = `matrix(0, 0, 0, 0, 0, 0)`;
     }
 }
 
-setScreenSize();
-
-window.addEventListener(
-    "scroll",
-    optimizeAnimation(() => {
-        scrollEffect();
-    }),
-    { passive: true }
-);
-
-window.addEventListener(
-    "resize",
-    optimizeAnimation(() => {
-        setScreenSize();
-    }),
-    { passive: true }
-);
-
-window.addEventListener(
-    "load",
-    () => {
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.getElementById("loader").classList.add("done");
-            setTimeout(() => {
-                document.getElementById("loader").remove();
-            }, 500);
-        }, 30);
-    },
-    { passive: true, once: true }
-);
-
-window.addEventListener("click", () => {
-    window.scroll(0, 0);
-    smoothScroll(document.documentElement.scrollHeight);
-});
+init();

@@ -25,9 +25,34 @@
             <img id="moon-m" src="./src/images/moon.png" alt="달" />
         </figure>
         <h1 id="title">Welcome</h1>
-        <figure id="iu">
+        <figure id="iu" class="container">
             <img src="./src/images/IU.png" alt="장만월" />
         </figure>
+        <figure
+            id="logo"
+            class="container"
+            aria-label="호텔 델루나 로고"
+        ></figure>
+        <svg class="filters">
+            <filter id="neon-blue">
+                <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="8"
+                    flood-color="#bfebee"
+                    flood-opacity="1"
+                />
+            </filter>
+            <filter id="neon-yellow">
+                <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="8"
+                    flood-color="#f4e6cc"
+                    flood-opacity="1"
+                />
+            </filter>
+        </svg>
         <div id="forScroll"></div>
         <footer id="footer">
             <h3>Thanks to</h3>
@@ -82,7 +107,7 @@
                 (호텔델루나 타이틀)
             </p>
         </footer>
-        <div id="loader">
+        <div id="loader" class="container">
             <svg viewBox="0 0 256 256" width="150" height="150">
                 <path
                     d="M223.532,137.53892A96.00374,96.00374,0,1,1,118.449,32.46915l.00005.00075a80.03385,80.03385,0,0,0,105.08326,105.069Z"

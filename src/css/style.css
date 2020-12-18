@@ -22,6 +22,9 @@ img {
 
 /* Parallax */
 .container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
 }
@@ -42,20 +45,8 @@ img {
     transform: translate3d(-50%, -50%, 0);
 }
 
-/* Sky */
-#sky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-}
-
 /* City */
 #city {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
     z-index: 2;
 }
 
@@ -123,10 +114,9 @@ img {
 
 /* fullmoonlong */
 #iu {
-    position: fixed;
-    width: 100%;
+    top: auto;
     bottom: 0;
-    left: 0;
+    height: 80vh;
     opacity: 0;
     z-index: 20;
 }
@@ -136,6 +126,63 @@ img {
     width: auto;
     height: 80vh;
     margin: 0 auto;
+}
+
+/* Logo */
+@keyframes blink {
+    0%,
+    100%,
+    50% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 30;
+}
+
+#logo > svg {
+    max-width: 80vw;
+    height: 60vh;
+    fill: none;
+    stroke: #f1f1f1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 5;
+    overflow: visible;
+}
+
+#logo > svg.filter {
+    position: absolute;
+}
+
+#logo.on > svg.filter {
+    animation: blink 2s ease-in-out forwards;
+}
+
+#logo path:not(.moon) {
+    stroke: #bfebee;
+}
+
+#logo path.moon {
+    stroke: #f4e6cc;
+}
+
+#logo.on > svg.filter > path:not(.moon) {
+    filter: url(#neon-blue);
+}
+
+#logo.on > svg.filter > path.moon {
+    filter: url(#neon-yellow);
 }
 
 /* Footer */
@@ -153,12 +200,7 @@ img {
 }
 
 #loader {
-    position: fixed;
-    top: 0;
-    left: 0;
     display: flex;
-    width: 100%;
-    height: 100vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
