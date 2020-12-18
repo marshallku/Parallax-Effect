@@ -175,14 +175,14 @@ img {
 /* Logo */
 @keyframes blink {
     0%,
-    100%,
-    50% {
-        opacity: 1;
-    }
-
-    25%,
-    75% {
+    50%,
+    85% {
         opacity: 0;
+    }
+    25%,
+    75%,
+    100% {
+        opacity: 1;
     }
 }
 
@@ -210,7 +210,7 @@ img {
 }
 
 #logo.on > svg.filter {
-    animation: blink 2s ease-in-out forwards;
+    animation: blink 2s cubic-bezier(0.55, 0, 1, 0.45) forwards;
 }
 
 #logo path:not(.moon) {
