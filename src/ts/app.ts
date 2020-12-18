@@ -95,7 +95,6 @@ function scrollEffect() {
     const largerPart = Math.max(vw, vh);
 
     if (scrollY <= 100 * vh) {
-        console.log("a");
         iu.style.opacity = "0";
         logoElem.style.opacity = "0";
         logoElem.classList.remove("on");
@@ -132,7 +131,6 @@ function scrollEffect() {
 
         moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${moonTransform.x}, ${moonTransform.y})`;
     } else if (scrollY <= 150 * vh) {
-        console.log("b");
         const currentY = scrollY - 100 * vh;
 
         logoElem.style.opacity = "0";
@@ -145,8 +143,8 @@ function scrollEffect() {
 
         iu.style.opacity = `${currentY / (50 * vh)}`;
     } else if (scrollY <= 170 * vh) {
-        console.log("c");
         iu.style.opacity = "1";
+        moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${tmpMoonTransform.x}, ${moonTransform.y})`;
     } else if (scrollY <= 220 * vh) {
         console.log("d");
         const currentY = scrollY - 170 * vh;
@@ -161,7 +159,6 @@ function scrollEffect() {
         logoElem.classList.remove("on");
         moon.style.transform = `matrix(${moonScale}, 0, 0, ${moonScale}, ${tmpMoonTransform.x}, ${moonTransform.y})`;
     } else {
-        console.log("e");
         iu.style.opacity = "0";
         logoElem.style.opacity = "1";
         logoElem.classList.add("on");
