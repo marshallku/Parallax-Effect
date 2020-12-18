@@ -71,15 +71,15 @@ function scrollEffect() {
             moonTransform.scale = 1 + currentY * 0.01;
         }
 
-        moon.style.transform = `translate3d(${moonTransform.x}px, ${moonTransform.y}px, 0) scale(${moonTransform.scale})`;
+        moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${moonTransform.x}, ${moonTransform.y})`;
     } else if (scrollY <= 150 * vh) {
         const currentY = scrollY - 100 * vh;
 
         castle.style.opacity = "0.5";
         moonGlow.style.opacity = "1";
-        moon.style.transform = `translate3d(${
-            moonTransform.x - currentY * 0.1
-        }px, ${moonTransform.y}px, 0) scale(${moonTransform.scale})`;
+        moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${
+            moonTransform.scale
+        }, ${moonTransform.x - currentY * 0.1}, ${moonTransform.y})`;
 
         iu.style.opacity = `${currentY / (50 * vh)}`;
     } else if (scrollY <= 200 * vh) {
