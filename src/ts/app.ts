@@ -80,7 +80,9 @@ function init() {
 
     document.getElementById("autoScroll").addEventListener("click", () => {
         window.scroll(0, 0);
-        smoothScroll(document.documentElement.scrollHeight);
+        smoothScroll(
+            document.documentElement.scrollHeight - 100 * screenSize.vh
+        );
     });
 }
 
