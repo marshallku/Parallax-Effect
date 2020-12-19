@@ -1,6 +1,7 @@
 import optimizeAnimation from "./optimizeAnimation";
 import smoothScroll from "./smoothScroll";
 import logo from "./logo";
+import star from "./star";
 
 const screenSize = {
     vw: 0,
@@ -58,7 +59,16 @@ function init() {
         "load",
         () => {
             setTimeout(() => {
+                const starWrap = document.getElementById("star");
+                // Scroll To Top
                 window.scrollTo(0, 0);
+
+                // Create starry background
+                for (let i = 0; i < 3; i++) {
+                    starWrap.append(star());
+                }
+
+                // Remove Loader
                 document.getElementById("loader").classList.add("done");
                 setTimeout(() => {
                     document.getElementById("loader").remove();
