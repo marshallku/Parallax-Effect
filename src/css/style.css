@@ -79,13 +79,21 @@ img {
     object-fit: cover;
 }
 
+/* Gold text */
+.goldText {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: url(../images/gold.png);
+    background-size: 100px;
+}
+
 /* Title */
 #title {
     position: fixed;
     top: 45vh;
     left: 50%;
     font-size: calc(75px + 4vw);
-    color: #f1f1f1;
     transform: translate3d(-50%, -50%, 0);
 }
 
