@@ -2,6 +2,7 @@ import optimizeAnimation from "./optimizeAnimation";
 import smoothScroll from "./smoothScroll";
 import logo from "./logo";
 import star from "./star";
+import PointerTracker from "./PointerTracker";
 
 const screenSize = {
     vw: 0,
@@ -24,6 +25,10 @@ const castle = document.getElementById("moon-c");
 const title = document.getElementById("title");
 const iu = document.getElementById("iu");
 const logoElem = document.getElementById("logo");
+const frames = document.getElementById("frames");
+const stars = document.getElementById("star");
+
+const tracker = new PointerTracker();
 
 function init() {
     // Append logo
@@ -34,6 +39,8 @@ function init() {
 
     logoElem.append(svgLogo);
     logoElem.append(forFilter);
+
+    tracker.attach();
 
     // Set ScreenSize
     setScreenSize();
@@ -59,13 +66,12 @@ function init() {
         "load",
         () => {
             setTimeout(() => {
-                const starWrap = document.getElementById("star");
                 // Scroll To Top
                 window.scrollTo(0, 0);
 
                 // Create starry background
                 for (let i = 0; i < 3; i++) {
-                    starWrap.append(star());
+                    stars.append(star());
                 }
 
                 // Remove Loader
@@ -105,6 +111,9 @@ function scrollEffect() {
     const largerPart = Math.max(vw, vh);
 
     if (scrollY <= 100 * vh) {
+        frames.classList.remove("reveal");
+        stars.classList.remove("reveal");
+
         iu.style.opacity = "0";
         logoElem.style.opacity = "0";
         logoElem.classList.remove("on");
@@ -143,6 +152,9 @@ function scrollEffect() {
     } else if (scrollY <= 150 * vh) {
         const currentY = scrollY - 100 * vh;
 
+        frames.classList.remove("reveal");
+        stars.classList.remove("reveal");
+
         logoElem.style.opacity = "0";
         logoElem.classList.remove("on");
         castle.style.opacity = "0.5";
@@ -152,17 +164,23 @@ function scrollEffect() {
         moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${tmpMoonTransform.x}, ${moonTransform.y})`;
 
         iu.style.opacity = `${currentY / (50 * vh)}`;
-    } else if (scrollY <= 170 * vh) {
+    } else if (scrollY <= 200 * vh) {
+        frames.classList.add("reveal");
+        stars.classList.add("reveal");
+
         iu.style.opacity = "1";
         moon.style.transform = `matrix(${moonTransform.scale}, 0, 0, ${moonTransform.scale}, ${tmpMoonTransform.x}, ${moonTransform.y})`;
-    } else if (scrollY <= 220 * vh) {
-        console.log("d");
-        const currentY = scrollY - 170 * vh;
+        logoElem.style.opacity = "0";
+    } else if (scrollY <= 250 * vh) {
+        const currentY = scrollY - 200 * vh;
         const percent50 = currentY / (50 * vh);
         const moonScale = Math.max(
             moonTransform.scale - percent50 * moonTransform.scale,
             0
         );
+
+        frames.classList.remove("reveal");
+        stars.classList.remove("reveal");
 
         iu.style.opacity = `${1 - percent50}`;
         logoElem.style.opacity = `${percent50}`;
