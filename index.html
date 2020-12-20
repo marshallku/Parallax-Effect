@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Parallax Effect</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link async rel="stylesheet" href="./src/css/style.css" />
+        <link
+            async
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <figure id="sky" class="container">
+            <img src="./src/images/sky.jpg" alt="밤 하늘" />
+        </figure>
+        <figure id="city" class="container">
+            <img src="./src/images/city.png" alt="도시" />
+        </figure>
+        <figure id="moon">
+            <img id="moon-g" src="./src/images/moon.png" alt="달" />
+            <img id="moon-c" src="./src/images/castle.png" alt="달 속 호텔" />
+            <img id="moon-m" src="./src/images/moon.png" alt="달" />
+        </figure>
+        <h1 id="title" class="goldText">Welcome</h1>
+        <figure id="iu" class="container">
+            <img src="./src/images/IU.png" alt="장만월" />
+        </figure>
+        <figure id="frames" class="container">
+            <div class="frame a"></div>
+            <div class="frame b"></div>
+            <div class="frame c"></div>
+            <div class="frame d"></div>
+            <div class="frame e"></div>
+            <div class="frame f"></div>
+        </figure>
+        <div id="star" class="container"></div>
+        <figure
+            id="logo"
+            class="container"
+            aria-label="호텔 델루나 로고"
+        ></figure>
+        <svg class="filters">
+            <filter id="neon-blue">
+                <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="8"
+                    flood-color="#bfebee"
+                    flood-opacity="1"
+                />
+            </filter>
+            <filter id="neon-yellow">
+                <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="8"
+                    flood-color="#f4e6cc"
+                    flood-opacity="1"
+                />
+            </filter>
+        </svg>
+        <button id="autoScroll">
+            <svg viewBox="0 0 256 256" fill="none">
+                <path
+                    d="M228.14833,121.17381,84.1717,33.18517A8,8,0,0,0,72,40.01136V215.98864a8,8,0,0,0,12.1717,6.82619l143.97663-87.98864A8,8,0,0,0,228.14833,121.17381Z"
+                    fill="none"
+                    stroke="#f1f1f1"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="16"
+                ></path>
+            </svg>
+            <span>Auto Scroll</span>
+        </button>
+        <div id="forScroll"></div>
+        <footer id="footer">
+            <h3>Thanks to</h3>
+            <p>
+                <a
+                    href="https://unsplash.com/@sandercrombach"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Sander Crombach
+                </a>
+                (Dome of the Rock, Jerusalem)
+            </p>
+            <p>
+                <a
+                    href="https://unsplash.com/@felix_mittermeier"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Felix Mittermeier
+                </a>
+                (milky way)
+            </p>
+            <p>
+                <a
+                    href="https://unsplash.com/@philipmyr"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Philip Myrtorp
+                </a>
+                (gold bauble hanged on green tree)
+            </p>
+            <p>
+                <a
+                    href="https://pixabay.com/users/mila-del-monte-14430330/"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    Mila Kusmenko
+                </a>
+                (Hohenzollern Schwäbische Alp)
+            </p>
+            <p>
+                <a
+                    href="https://pixabay.com/users/stux-12364/"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    stux
+                </a>
+                (Frame Gold Antique)
+            </p>
+            <p>
+                <a
+                    href="https://www.youtube.com/c/Moonben"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    문벤[영상디자인 크리에이터]
+                </a>
+                (호텔델루나 타이틀)
+            </p>
+            <p>
+                <a
+                    href="http://program.tving.com/tvn/hoteldelluna/"
+                    rel="nofollow, noreferer, noindex"
+                    target="_blank"
+                >
+                    tvN 호텔 델루나
+                </a>
+            </p>
+        </footer>
+        <div id="loader" class="container">
+            <svg viewBox="0 0 256 256" width="150" height="150">
+                <path
+                    d="M223.532,137.53892A96.00374,96.00374,0,1,1,118.449,32.46915l.00005.00075a80.03385,80.03385,0,0,0,105.08326,105.069Z"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="8"
+                />
+            </svg>
+            Loading
+        </div>
+        <script defer src="./dist/app.js"></script>
+    </body>
+</html>
