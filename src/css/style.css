@@ -239,7 +239,7 @@ img {
 
     #frames > .b {
         left: 5vh;
-        top: 40vh;
+        top: calc(50vh - 80px);
     }
 
     #frames > .b::before {
@@ -268,7 +268,7 @@ img {
 
     #frames > .e {
         right: 5vh;
-        top: 40vh;
+        top: calc(50vh - 80px);
     }
 
     #frames > .e::before {
