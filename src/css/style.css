@@ -198,13 +198,13 @@ img {
         transform: scale(1);
     }
 
-    #frames > div,
-    #frames > div::before {
+    #frames > .frame,
+    #frames > .frame::before {
         background-repeat: no-repeat;
     }
 
-    #frames > div::before,
-    #frames > div::after {
+    #frames > .frame::before,
+    #frames > .frame::after {
         content: "";
         position: absolute;
         top: 0;
@@ -216,14 +216,22 @@ img {
         background-repeat: no-repeat;
     }
 
-    #frames > div::after {
+    #frames > .frame::after {
         background-image: url(../images/frame.png);
     }
 
-    #frames > div {
+    #frames > .frame {
         position: absolute;
         width: 160px;
         height: 205px;
+    }
+
+    #frames:not(.reveal) > .frame {
+        transition: transform 0.35s ease-in-out;
+    }
+
+    #frames.reveal > .frame {
+        transform: perspective(500px) rotateX(var(--x)) rotateY(var(--y));
     }
 
     #frames > .a {

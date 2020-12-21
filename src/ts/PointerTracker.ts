@@ -1,19 +1,43 @@
 export default class PointerTracker {
-    elements: NodeListOf<HTMLElement>;
+    elements: transformElement[];
     max: number;
+    ticking: boolean;
     constructor() {
-        this.elements = document.querySelectorAll(".frame");
+        this.elements = this.getElements();
+
         this.max = 20;
+        this.ticking = false;
     }
 
-    transform = (xCord: number, yCord: number, element: HTMLElement) => {
+    getElements = () => {
+        const array: transformElement[] = [];
+
+        document.querySelectorAll(".frame").forEach((element: HTMLElement) => {
+            array.push({
+                top: element.offsetTop,
+                left: element.offsetLeft,
+                height: element.offsetHeight,
+                width: element.offsetWidth,
+                element,
+            });
+        });
+
+        return array;
+    };
+
+    transform = (
+        xCord: number,
+        yCord: number,
+        transformElem: transformElement
+    ) => {
         const { max } = this;
 
         // used offset instead of getBoundingClientRect because they're fixed
-        const x = -(yCord - element.offsetTop - element.offsetHeight / 2) / max;
-        const y = (xCord - element.offsetLeft - element.offsetWidth / 2) / max;
+        const x = -(yCord - transformElem.top - transformElem.height / 2) / max;
+        const y = (xCord - transformElem.left - transformElem.width / 2) / max;
 
-        element.style.transform = `perspective(500px) rotateX(${x}deg) rotateY(${y}deg)`;
+        transformElem.element.style.setProperty("--x", `${x}deg`);
+        transformElem.element.style.setProperty("--y", `${y}deg`);
     };
 
     handleMove = (x: number, y: number) => {
@@ -24,11 +48,26 @@ export default class PointerTracker {
     };
 
     handleMouseMove = (event: MouseEvent) => {
-        this.handleMove(event.clientX, event.clientY);
+        if (!this.ticking) {
+            this.ticking = true;
+            requestAnimationFrame(() => {
+                this.handleMove(event.clientX, event.clientY);
+                this.ticking = false;
+            });
+        }
     };
 
     handleTouchMove = (event: TouchEvent) => {
-        this.handleMove(event.touches[0].clientX, event.touches[0].clientY);
+        if (!this.ticking) {
+            this.ticking = true;
+            requestAnimationFrame(() => {
+                this.handleMove(
+                    event.touches[0].clientX,
+                    event.touches[0].clientY
+                );
+                this.ticking = false;
+            });
+        }
     };
 
     attach = () => {
