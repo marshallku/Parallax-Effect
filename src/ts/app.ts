@@ -111,6 +111,7 @@ function scrollEffect() {
     const largerPart = Math.max(vw, vh);
 
     if (scrollY <= 100 * vh) {
+        const skyOpacity = 1 - 0.003 * scrollY;
         frames.classList.remove("reveal");
         stars.classList.remove("reveal");
 
@@ -118,6 +119,7 @@ function scrollEffect() {
         logoElem.style.opacity = "0";
         logoElem.classList.remove("on");
         sky.style.transform = `translate3d(0, ${-0.25 * scrollY}px, 0)`;
+        sky.style.opacity = `${skyOpacity >= 0 ? skyOpacity : 0}`;
 
         if (scrollY <= 60 * vh) {
             const halfVh = 30 * vh;
